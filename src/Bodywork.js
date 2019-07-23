@@ -5,10 +5,14 @@ export class BodyWork extends React.Component {
     render() {
         return (
             <div>
-                <div className="Cards">
-                    <p>{this.props.arrRender}</p>
-                    aaaaaaa
-                </div>
+                {this.props.selectedItemArr && this.props.selectedItemArr.map(function(item, index){
+                    return (
+                        <div className="Cards">
+                            <h1>{item.name}</h1>
+                            <h2>{item.price}</h2>
+                        </div>
+                    )
+                })}
             </div>
         )
     }

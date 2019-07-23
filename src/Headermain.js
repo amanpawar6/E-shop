@@ -3,31 +3,40 @@ import './App.css';
 import clothes from './Clothes';
 import './Headermain.css';
 import BodyWork from './Bodywork';
+import Select from "react-dropdown-select";
+
+const list = [{
+    name: 'Clothes'
+},
+{
+    name: 'Shoes'
+},
+{
+    name: 'Electronics'
+}]
 
 export class headermain extends React.Component {
     constructor() {
         super();
+    }
 
+    onChange = (values) => {
+        this.props.getOption(values[0]);
     }
     
     render() {
         return (
             <div>
                 <header className="header">
-                    Menu : <input list="Menu" name="menu"></input>
-                    <datalist id="Menu">
-                        <option value="Shoes"></option>
-                        <option value="Electronics"></option>
-                        <option value="Cases"></option>
-                    </datalist>
-                    <br></br>
-                    {/* <div>
-                        <p>{this.props.name}</p>
-                        <input type="button" value="Submit" onClick = {this.props.arrRender}></input>
-                    </div> */}
-                    <a></a>
+                    <Select
+                        options={list}
+                        searchBy='name'
+                        onChange={(values) => this.onChange(values)}
+                        color='#0074D9'
+                        labelField='name'
+                    />
                 </header>
-                </div>
+            </div>
         );
     }
 
